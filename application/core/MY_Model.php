@@ -8,6 +8,7 @@ class MY_Model extends CI_Model
     protected $timestamps = null;
     protected $timestamps_format = 'Y-m-d H:i:s';
     protected $fillables = null;
+    protected $searchables = null;
 
     public function __construct()
     {
@@ -17,13 +18,50 @@ class MY_Model extends CI_Model
 
     /**
      * Método general para seleccionar todos los registors de una tabla específica
-     * @param array $data
+     * @param $limit: el límite de registros por consulta
+     * @param $start: el número donde comanzará la consulta 
      * @return array
      */
-    public function select_all()
+    public function select_all($limit = NULL, $start = NULL, $search_string = NULL)
     {
-        $query = $this->db->get($this->table);
-        return $query->result_array();
+
+        if ($search_string != NULL && $this->searchables != NULL) {
+            $counter = 1;
+            foreach ($this->searchables as $searchable) {
+                if ($counter == 1) {
+                    $this->db->where($searchable, $search_string);
+                    $counter++;
+                } else {
+                    $this->db->or_where($searchable, $search_string);
+                }
+            }
+        }
+        if ($limit != NULL && $start != NULL) {
+            $this->db->limit($limit, $start);
+        }
+
+        $query =  $this->db->get($this->table)->result_array();
+        $sql = $this->db->last_query();
+        var_dump($sql);
+        return $query;
+    }
+
+
+    public function get_count($search_string = NULL)
+    {
+        if ($search_string != NULL && $this->searchables != NULL) {
+            $counter = 1;
+            foreach ($this->searchables as $searchable) {
+                if ($counter == 1) {
+                    $this->db->where($searchable, $search_string);
+                    $counter++;
+                } else {
+                    $this->db->or_where($searchable, $search_string);
+                }
+            }
+        }
+
+        return $this->db->count_all_results($this->table);
     }
 
     /**

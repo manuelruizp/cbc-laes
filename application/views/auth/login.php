@@ -8,7 +8,7 @@
     <title>Ingresar</title>
     <link rel="shortcut icon" href="/favicon.png">
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/login.css">
     <script src="/assets/bootstrap/js/bootstrap.js"></script>
 </head>
 

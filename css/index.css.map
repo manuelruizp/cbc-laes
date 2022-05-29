@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.scss","index.css"],"names":[],"mappings":"AAAA,UAEI,WCCJ,CDEA,KAEI,wBAAA,CADA,gBCEJ","file":"index.css","sourcesContent":["html,\r\nbody {\r\n    height: 100%;\r\n}\r\n\r\nbody {\r\n    padding-top: 40px;\r\n    background-color: #f5f5f5;\r\n}\r\n","html,\nbody {\n  height: 100%;\n}\n\nbody {\n  padding-top: 40px;\n  background-color: #f5f5f5;\n}"]}

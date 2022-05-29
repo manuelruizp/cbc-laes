@@ -30,24 +30,29 @@ class Migration_Add_students extends CI_Migration
                 'type' => 'VARCHAR',
                 'constraint' => '30',
             ),
-            'username' => array(
+            'student_id' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '60',
+                'unique' => true
             ),
             'sex' => array(
-                'type' => 'VARCHAR',
-                'constraint' => '5',
+                'type' => 'ENUM("M", "F")'
             ),
-            'grade_level' => array(
-                'type' => 'VARCHAR',
-                'constraint' => '30',
+            'birthdate' => array(
+                'type' => 'DATE'
             ),
-            'is_active' => array(
-                'type' => 'TINYINT',
-                'default' => '1'
+            'created_by_id' =>  array(
+                'type' => 'INT',
+                'constraint' => 5,
+                'null' => true,
             ),
             'created_at' =>  array(
                 'type' => 'DATETIME',
+                'null' => true,
+            ),
+            'updated_by_id' =>  array(
+                'type' => 'INT',
+                'constraint' => 5,
                 'null' => true,
             ),
             'updated_at' =>  array(

@@ -1,14 +1,14 @@
 <?php
 
 /** 
- * Maker
+ * Make
  * Controllador para generar nuevas clases en la linea de comando.
  * 
  * Cómo utilizar (ejemplo):
  * php index.php Maker [Controller/Model] [nombre de la clase]
  * */
 
-class Maker extends MY_Controller
+class Make extends MY_Controller
 {
     public function __construct()
     {
@@ -30,7 +30,7 @@ class Maker extends MY_Controller
         $filename = ucfirst(singular($name)) . "_model.php";
         $classname = ucfirst(singular($name)) . "_model";
         $table_name = plural(lcfirst($name));
-        
+
         if (file_exists(APPPATH . "controllers/$filename")) {
             die('¡Disculpe! No podemos reemplazar un archivo. Revise y elimine manualmente primero.');
         }
@@ -78,6 +78,70 @@ class Maker extends MY_Controller
             echo '¡Disculpe! No pudimos generar el nuevo controlador CI';
         } else {
             echo 'controlador CI nuevo generado. ¡Excelente!';
+        }
+    }
+
+    public function migration($name = null)
+    {
+        if (!$name) {
+            die("Debe digitar un nombre para la nueva migración");
+        }
+
+        // Migration_Add_students
+
+        $classname = "Migration_Add_" . plural(lcfirst($name));
+        $filename = date('Ymdhis') . "_add_" . plural(lcfirst($name)) . ".php";
+
+        if (file_exists(APPPATH . "migrations/$filename")) {
+            die('¡Disculpe! No podemos reemplazar un archivo. Revise y elimine manualmente primero.');
+        }
+
+        $file_content = '<?php
+        class ' . $classname . ' extends CI_Migration { 
+            
+    public function up()
+    {
+        $this->dbforge->add_field(array(
+            "id" => array(
+                "type" => "INT",
+                "constraint" => 5,
+                "unsigned" => TRUE,
+                "auto_increment" => TRUE
+            ),
+            "created_by_id" =>  array(
+                "type" => "INT",
+                "constraint" => 5,
+                "null" => true,
+            ),
+            "created_at" =>  array(
+                "type" => "DATETIME",
+                "null" => true,
+            ),
+            "updated_by_id" =>  array(
+                "type" => "INT",
+                "constraint" => 5,
+                "null" => true,
+            ),
+            "updated_at" =>  array(
+                "type" => "DATETIME",
+                "null" => true,
+            ),
+        ));
+        $this->dbforge->add_key("id", TRUE);
+        $this->dbforge->create_table("' . plural(lcfirst($name)) . '");
+    }
+
+    public function down()
+    {
+        $this->dbforge->drop_table("' . plural(lcfirst($name)) . '");
+    }
+}';
+
+        // Intentamos escribir el archivo
+        if (!write_file(APPPATH . "/migrations/$filename", $file_content)) {
+            echo '¡Disculpe! No pudimos generar la nueva migración CI';
+        } else {
+            echo 'Migración CI nuevo generada. ¡Excelente!';
         }
     }
 }
