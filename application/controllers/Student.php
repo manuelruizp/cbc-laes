@@ -2,18 +2,50 @@
 
 class Student extends MY_Controller
 {
+
+    protected $pagination_limit = 10;
+    
     public function __construct()
     {
         parent::__construct();
         $this->load->model('Student_model');
     }
 
-    public function index()
+    public function index($start = 0, $reset = NULL)
     {
-        $data['title'] = 'Gestión de Estudiantes';
-        $data['students'] = $this->Student_model->select_all();
+        if ($reset) {
+            $this->session->unset_userdata('search_student');
+        }
 
-        $this->load->view('templates/header', $data);
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $search_student = $this->input->post('search_student');
+            $this->session->set_userdata('search_student', $search_student);
+            $data['students'] = $this->Student_model->select_all($this->pagination_limit, $start, $search_student);
+            $data['search_student'] = $search_student;
+            $config['total_rows'] = $this->Student_model->get_count($search_student);
+
+        } else  if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            if ($this->session->userdata('search_student')) {
+                $search_student = $this->session->userdata('search_student');
+                $data['students'] = $this->Student_model->select_all($this->pagination_limit, $start, $search_student);
+                $data['search_student'] = $search_student;
+                $config['base_url'] = 'http://localhost:3000/student/index/' . $start;
+                $config['total_rows'] = $this->Student_model->get_count($search_student);
+            } else {
+                $data['students'] = $this->Student_model->select_all($this->pagination_limit, $start);
+                $data['search_student'] = '';
+                $config['base_url'] = 'http://localhost:3000/student/index/' . $start;
+                $config['total_rows'] = $this->Student_model->get_count();
+            }
+        }
+
+        $config['base_url'] = 'http://localhost:3000/student/index';
+        $config['per_page'] = $this->pagination_limit;
+        $this->pagination->initialize($config);
+
+        $this->load->view('templates/header');
+        $this->load->view('templates/navbar');
+        $this->load->view('templates/flash_messages');
         $this->load->view('student/index', $data);
         $this->load->view('templates/footer');
     }

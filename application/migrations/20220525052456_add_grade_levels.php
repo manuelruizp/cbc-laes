@@ -1,6 +1,7 @@
 <?php
-        class Migration_Add_student_grade_levels extends CI_Migration { 
-            
+class Migration_Add_grade_levels extends CI_Migration
+{
+
     public function up()
     {
         $this->dbforge->add_field(array(
@@ -9,6 +10,14 @@
                 "constraint" => 5,
                 "unsigned" => TRUE,
                 "auto_increment" => TRUE
+            ),
+            "title" =>  array(
+                "type" => "VARCHAR",
+                "constraint" => 255,
+            ),
+            "title_abbr" =>  array(
+                "type" => "VARCHAR",
+                "constraint" => 50,
             ),
             "created_by_id" =>  array(
                 "type" => "INT",
@@ -30,11 +39,11 @@
             ),
         ));
         $this->dbforge->add_key("id", TRUE);
-        $this->dbforge->create_table("student_grade_levels");
+        $this->dbforge->create_table("grade_levels");
     }
 
     public function down()
     {
-        $this->dbforge->drop_table("student_grade_levels");
+        $this->dbforge->drop_table("grade_levels");
     }
 }

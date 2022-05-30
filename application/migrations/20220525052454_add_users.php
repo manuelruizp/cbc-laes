@@ -34,7 +34,7 @@ class Migration_Add_users extends CI_Migration
                 'type' => 'VARCHAR',
                 'constraint' => '80'
             ),
-            'password_hash' => array(
+            'password' => array(
                 'type' => 'TEXT'
             ),
             'role' => array(

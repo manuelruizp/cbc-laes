@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Aguero',
                 'email' => 'j.aguero@cbc.edu.do',
                 'username' => 'j.aguero',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             2 => array(
@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Auguiste',
                 'email' => 'a.auguiste@cbc.edu.do',
                 'username' => 'a.auguiste',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             3 => array(
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Cabreja',
                 'email' => 'r.cabreja@cbc.edu.do',
                 'username' => 'r.cabreja',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             4 => array(
@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Cámpiz',
                 'email' => 't.campiz@cbc.edu.do',
                 'username' => 't.campiz',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             5 => array(
@@ -52,7 +52,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Contreras',
                 'email' => 'k.contreras@cbc.edu.do',
                 'username' => 'k.contreras',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             6 => array(
@@ -61,7 +61,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Correa',
                 'email' => 'i.correa@cbc.edu.do',
                 'username' => 'i.correa',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             7 => array(
@@ -70,7 +70,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Cuevas',
                 'email' => 'i.cuevas@cbc.edu.do',
                 'username' => 'i.cuevas',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             8 => array(
@@ -79,7 +79,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'de Jesús',
                 'email' => 'm.dejesus@cbc.edu.do',
                 'username' => 'm.dejesus',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             9 => array(
@@ -88,7 +88,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Díaz',
                 'email' => 'c.diaz@cbc.edu.do',
                 'username' => 'c.diaz',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             10 => array(
@@ -97,7 +97,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Duran',
                 'email' => 'm.duran@cbc.edu.do',
                 'username' => 'm.duran',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             11 => array(
@@ -106,7 +106,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Félix',
                 'email' => 'l.felix@cbc.edu.do',
                 'username' => 'l.felix',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             12 => array(
@@ -115,7 +115,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Feliz',
                 'email' => 'g.feliz@cbc.edu.do',
                 'username' => 'g.feliz',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             13 => array(
@@ -124,7 +124,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Florián',
                 'email' => 'm.florian@cbc.edu.do',
                 'username' => 'm.florian',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             14 => array(
@@ -133,7 +133,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Francisco',
                 'email' => 'n.francisco@cbc.edu.do',
                 'username' => 'n.francisco',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             15 => array(
@@ -142,7 +142,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Guerrero',
                 'email' => 'd.guerrero@cbc.edu.do',
                 'username' => 'd.guerrero',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             16 => array(
@@ -151,7 +151,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Guzmán',
                 'email' => 'r.guzman@cbc.edu.do',
                 'username' => 'r.guzman',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             17 => array(
@@ -160,7 +160,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Ledesma',
                 'email' => 'm.ledesma@cbc.edu.do',
                 'username' => 'm.ledesma',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             18 => array(
@@ -169,7 +169,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Lluberes',
                 'email' => 'l.lluberes@cbc.edu.do',
                 'username' => 'l.lluberes',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             19 => array(
@@ -178,7 +178,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Lorenzo',
                 'email' => 'r.lorenzo@cbc.edu.do',
                 'username' => 'r.lorenzo',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             20 => array(
@@ -187,7 +187,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Marmolejos',
                 'email' => 'j.marmolejos@cbc.edu.do',
                 'username' => 'j.marmolejos',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             21 => array(
@@ -196,7 +196,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Martinez',
                 'email' => 'm.martinez@cbc.edu.do',
                 'username' => 'm.martinez',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             22 => array(
@@ -205,7 +205,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Meregildo',
                 'email' => 'c.meregildo@cbc.edu.do',
                 'username' => 'c.meregildo',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             23 => array(
@@ -214,7 +214,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Montaño',
                 'email' => 'a.montano@cbc.edu.do',
                 'username' => 'a.montano',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             24 => array(
@@ -223,7 +223,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Montero',
                 'email' => 'o.montero@cbc.edu.do',
                 'username' => 'o.montero',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             25 => array(
@@ -232,7 +232,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Montero',
                 'email' => 'p.montero@cbc.edu.do',
                 'username' => 'p.montero',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             26 => array(
@@ -241,7 +241,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Mora',
                 'email' => 'd.mora@cbc.edu.do',
                 'username' => 'd.mora',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             27 => array(
@@ -250,7 +250,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Nouel',
                 'email' => 'a.nouel@cbc.edu.do',
                 'username' => 'a.nouel',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             28 => array(
@@ -259,7 +259,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Ovalles',
                 'email' => 'j.ovalles@cbc.edu.do',
                 'username' => 'j.ovalles',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             29 => array(
@@ -268,7 +268,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Paez',
                 'email' => 'm.paez@cbc.edu.do',
                 'username' => 'm.paez',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             30 => array(
@@ -277,7 +277,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Peña',
                 'email' => 'e.pena@cbc.edu.do',
                 'username' => 'e.pena',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             31 => array(
@@ -286,7 +286,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Peralta',
                 'email' => 's.peralta@cbc.edu.do',
                 'username' => 's.peralta',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             32 => array(
@@ -295,7 +295,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Pinales',
                 'email' => 'd.pinales@cbc.edu.do',
                 'username' => 'd.pinales',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             33 => array(
@@ -304,7 +304,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Puello',
                 'email' => 'm.puello@cbc.edu.do',
                 'username' => 'm.puello',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             34 => array(
@@ -313,7 +313,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Ramirez',
                 'email' => 'k.ramirez@cbc.edu.do',
                 'username' => 'k.ramirez',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             35 => array(
@@ -322,7 +322,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Reyes',
                 'email' => 'g.reyes@cbc.edu.do',
                 'username' => 'g.reyes',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             36 => array(
@@ -331,7 +331,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Rijo',
                 'email' => 'c.rijo@cbc.edu.do',
                 'username' => 'c.rijo',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             37 => array(
@@ -340,7 +340,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Rojas',
                 'email' => 'g.rojas@cbc.edu.do',
                 'username' => 'g.rojas',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             38 => array(
@@ -349,7 +349,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Sanchez',
                 'email' => 'ab.sanchez@cbc.edu.do',
                 'username' => 'ab.sanchez',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             39 => array(
@@ -358,7 +358,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Sanchez',
                 'email' => 'a.sanchez@cbc.edu.do',
                 'username' => 'a.sanchez',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             40 => array(
@@ -367,7 +367,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Tejada',
                 'email' => 'l.tejada@cbc.edu.do',
                 'username' => 'l.tejada',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             41 => array(
@@ -376,7 +376,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Volquez',
                 'email' => 's.volquez@cbc.edu.do',
                 'username' => 's.volquez',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
             42 => array(
@@ -385,7 +385,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Xavier',
                 'email' => 'b.xavier@cbc.edu.do',
                 'username' => 'b.xavier',
-                'password_hash' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
+                'password' => '$2y$10$xiIRxcjBaQD2DsYrDKn0suQCVxPrvDmSxZZspjGOiC35nnDaw2jOa',
                 'role' => 'Teacher'
             ),
         );;

@@ -1,6 +1,7 @@
 <?php
-        class Migration_Add_term_users extends CI_Migration { 
-            
+class Migration_Add_rubrics extends CI_Migration
+{
+
     public function up()
     {
         $this->dbforge->add_field(array(
@@ -9,6 +10,25 @@
                 "constraint" => 5,
                 "unsigned" => TRUE,
                 "auto_increment" => TRUE
+            ),
+            'title' => array(
+                'type' => 'TEXT',
+            ),
+            'non_compliance' => array(
+                'type' => 'TEXT',
+            ),
+            'partial_compliance' => array(
+                'type' => 'TEXT',
+            ),
+            'compliance' => array(
+                'type' => 'TEXT',
+            ),
+            'exceeds_compliance' => array(
+                'type' => 'TEXT',
+            ),
+            'type' => array(
+                'type' => 'VARCHAR',
+                'constraint' => '100'
             ),
             "created_by_id" =>  array(
                 "type" => "INT",
@@ -30,11 +50,11 @@
             ),
         ));
         $this->dbforge->add_key("id", TRUE);
-        $this->dbforge->create_table("term_users");
+        $this->dbforge->create_table("rubrics");
     }
 
     public function down()
     {
-        $this->dbforge->drop_table("term_users");
+        $this->dbforge->drop_table("rubrics");
     }
 }

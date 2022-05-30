@@ -3,25 +3,22 @@
         <h1 class="h2">Gestión de usuarios</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <a href="/students/create" class="btn btn-sm btn-outline-secondary">Crear usuario</a>
+                <a href="/user/create" class="btn btn-sm btn-outline-secondary">Crear usuario</a>
             </div>
         </div>
     </div>
 
-    <?= form_open('user/index', ['class' => 'row g-3 align-items-center']) ?>
+    <?= form_open('user/index', ['class' => 'row g-2 align-items-center justify-content-end']) ?>
     <div class="col-auto">
-        <label for="name" class="col-form-label">Nombre</label>
+        <input type="text" name="search_user" class="form-control form-control-sm" placeholder="Buscar..." value="<?= $search_user; ?>">
     </div>
     <div class="col-auto">
-        <input type="text" name="search" class="form-control" value="<?= $search_query; ?>">
-    </div>
-    <div class="col-auto">
-        <button type="submit" class="btn btn-primary">Buscar</button>
-        <a class="btn btn-outline-secondary" href="/user">Reiniciar</a>
+        <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
+        <a class="btn btn-outline-secondary  btn-sm" href="/user/index/0/1">Reiniciar</a>
     </div>
     <?= form_close(); ?>
 
-    <table class="table">
+    <table class="table table-sm">
         <thead>
             <tr>
                 <th scope="col">Nombre</th>
@@ -34,13 +31,12 @@
             <?php if (count($users) > 0) : ?>
                 <?php foreach ($users as $user) : ?>
                     <tr>
-                        <td><?= $user['last_name'] . ", " . $user['first_name']  ?></td>
+                        <td><a href="<?= site_url(['user', 'view', $user['id']]); ?> "><?= $user['last_name'] . ", " . $user['first_name'] . $user['middle_name']  ?></a>                        
+                    </td>
                         <td><?= $user['email']; ?></td>
                         <td><?= $user['username'] ?></td>
                         <td>
-                            <a href="<?= site_url(['user', 'view', $user['id']]); ?> ">Ver</a>
-                            <a href="<?= site_url(['user', 'view', $user['id']]); ?> ">Editar</a>
-                            <a href="<?= site_url(['user', 'view', $user['id']]); ?> ">Desactivar</a>
+                            <a href="<?= site_url(['user', 'edit', $user['id']]); ?> ">Editar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

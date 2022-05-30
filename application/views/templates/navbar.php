@@ -16,14 +16,16 @@
                             Admin
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Usuarios</a></li>
-                            <li><a class="dropdown-item" href="/student/index">Estudiantes</a></li>
+                            <li><a class="dropdown-item" href="/user">Usuarios</a></li>
+                            <li><a class="dropdown-item" href="/student">Estudiantes</a></li>
+                            <li><a class="dropdown-item" href="/grade_level">Cursos y secciones</a></li>
+                            <li><a class="dropdown-item" href="/term">Periodos de evaluación</a></li>
+                            <li><a class="dropdown-item" href="/rubric">Rúbricas</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Periodos de evaluación</a></li>
-                            <li><a class="dropdown-item" href="#">Reportes</a></li>
-                            <li><a class="dropdown-item" href="#">Importar datos</a></li>
+                            <li><a class="dropdown-item" href="/report">Reportes</a></li>
+                            <li><a class="dropdown-item" href="/import">Importar datos</a></li>
                         </ul>
                     </li>
                 </ul>

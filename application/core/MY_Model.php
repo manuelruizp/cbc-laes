@@ -3,12 +3,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class MY_Model extends CI_Model
 {
-    protected $table = null;
-    protected $primary_key = null;
-    protected $timestamps = null;
+    protected $table = NULL;
+    protected $primary_key = NULL;
+    protected $timestamps = NULL;
     protected $timestamps_format = 'Y-m-d H:i:s';
-    protected $fillables = null;
-    protected $searchables = null;
+
+    protected $fillables = NULL;
+    protected $fillable_dates = NULL;
+    protected $hashable_passwords = NULL;
+
+    protected $searchables = NULL;
 
     public function __construct()
     {
@@ -22,30 +26,25 @@ class MY_Model extends CI_Model
      * @param $start: el número donde comanzará la consulta 
      * @return array
      */
-    public function select_all($limit = NULL, $start = NULL, $search_string = NULL)
+    public function select_all($limit = 10, $start = 0, $search_string = NULL)
     {
 
         if ($search_string != NULL && $this->searchables != NULL) {
             $counter = 1;
             foreach ($this->searchables as $searchable) {
                 if ($counter == 1) {
-                    $this->db->where($searchable, $search_string);
+                    $this->db->like($searchable, $search_string, 'both');
                     $counter++;
                 } else {
-                    $this->db->or_where($searchable, $search_string);
+                    $this->db->or_like($searchable, $search_string, 'both');
                 }
             }
         }
-        if ($limit != NULL && $start != NULL) {
-            $this->db->limit($limit, $start);
-        }
 
-        $query =  $this->db->get($this->table)->result_array();
-        $sql = $this->db->last_query();
-        var_dump($sql);
-        return $query;
+        $this->db->limit($limit, $start);
+
+        return  $this->db->get($this->table)->result_array();
     }
-
 
     public function get_count($search_string = NULL)
     {
@@ -53,10 +52,10 @@ class MY_Model extends CI_Model
             $counter = 1;
             foreach ($this->searchables as $searchable) {
                 if ($counter == 1) {
-                    $this->db->where($searchable, $search_string);
+                    $this->db->like($searchable, $search_string, 'both');
                     $counter++;
                 } else {
-                    $this->db->or_where($searchable, $search_string);
+                    $this->db->or_like($searchable, $search_string, 'both');
                 }
             }
         }
@@ -77,7 +76,7 @@ class MY_Model extends CI_Model
     /**
      * Método general para insertar una fila a una tabla especificada
      * @param array $data
-     * @return mixed
+     * @return int
      */
     public function insert_one($data)
     {
@@ -88,6 +87,41 @@ class MY_Model extends CI_Model
 
         $this->db->insert($this->table, $data);
 
+        return $this->db->insert_id();
+    }
+
+    public function insert_one_from_form()
+    {
+        if ($this->fillables == NULL && $this->fillable_dates == NULL) {
+            die('Debes configurar uno de estos tipos de campos: fillables y fillable_dates (fechas dominicanas).');
+        }
+
+        if ($this->fillables) {
+            foreach ($this->fillables as $fillable) {
+                $data[$fillable] = $this->input->post($fillable);
+            }
+        }
+        if ($this->fillable_dates) {
+            foreach ($this->fillable_dates as $fillable_date) {
+                $dateArr = explode("/", $this->input->post($fillable_date));
+                $data[$fillable_date] = $dateArr[2] . "-" . $dateArr[1] . "-" . $dateArr[0];
+            }
+        }
+        
+        if ($this->hashable_passwords) {
+            foreach ($this->hashable_passwords as $hashable_password) {
+                if (!empty($this->input->post($hashable_password))) {
+                    $data[$hashable_password] = password_hash($this->input->post($hashable_password), PASSWORD_DEFAULT);
+                }
+            }
+        }
+
+        if ($this->timestamps) {
+            $data['created_at'] = date($this->timestamps_format);
+            $data['updated_at'] = date($this->timestamps_format);
+        }
+
+        $this->db->insert($this->table, $data);
         return $this->db->insert_id();
     }
 
@@ -117,14 +151,52 @@ class MY_Model extends CI_Model
      * @param array $batch
      * @return mixed
      */
-    public function update_one_primary_key($primary_key, $data)
+    public function update_one($data, $primary_key)
     {
+        if ($this->timestamps) {
+            $data['updated_at'] = date($this->timestamps_format);
+        }
+
+        $this->db->where($data['primary_key'], $primary_key);
+
+        return $this->db->update($this->table, $data);
+    }
+
+    public function update_one_from_form($id)
+    {
+        if (!$this->primary_key) {
+            die('Debes configurar la llave primaria de este modelo antes de continuar.');
+        }
+
+        if ($this->fillables == NULL && $this->fillable_dates == NULL) {
+            die('Debes configurar uno de estos tipos de campos: fillables y fillable_dates (fechas dominicanas).');
+        }
+
+        if ($this->fillables) {
+            foreach ($this->fillables as $fillable) {
+                $data[$fillable] = $this->input->post($fillable);
+            }
+        }
+        if ($this->fillable_dates) {
+            foreach ($this->fillable_dates as $fillable_date) {
+                $dateArr = explode("/", $this->input->post($fillable_date));
+                $data[$fillable_date] = $dateArr[2] . "-" . $dateArr[1] . "-" . $dateArr[0];
+            }
+        }
+
+        if ($this->hashable_passwords) {
+            foreach ($this->hashable_passwords as $hashable_password) {
+                if (!empty($this->input->post($hashable_password))) {
+                    $data[$hashable_password] = password_hash($this->input->post($hashable_password), PASSWORD_DEFAULT);
+                }
+            }
+        }
 
         if ($this->timestamps) {
             $data['updated_at'] = date($this->timestamps_format);
         }
 
-        $this->db->where($this->primary_key, $primary_key);
+        $this->db->where($this->primary_key, $id);
 
         return $this->db->update($this->table, $data);
     }
@@ -157,7 +229,7 @@ class MY_Model extends CI_Model
      */
     public function count_all(array $where = NULL)
     {
-        if (!is_null($where)) {
+        if (!is_NULL($where)) {
             $where_keys = array_keys($where);
             for ($i = 0; $i < count($where); $i++) {
                 $this->db->where($where_keys[$i], $where[$where_keys[$i]]);

@@ -28,10 +28,10 @@
             [
                 'class' =>  form_error('start_date') ? 'form-control is-invalid' : 'form-control',
                 'id' => 'start_date',
+                'name' => 'start_date',
                 'placeholder' => 'dd/mm/yyyy',
             ]
         ); ?>
-        <input type="hidden" name="start_date">
         <div class="invalid-feedback">
             La fecha de inicio es obligatoria.
         </div>
@@ -42,10 +42,10 @@
             [
                 'class' =>  form_error('end_date') ? 'form-control is-invalid' : 'form-control',
                 'id' => 'end_date',
+                'name' => 'end_date',
                 'placeholder' => 'dd/mm/yyyy',
             ]
         ); ?>
-        <input type="hidden" name="end_date">
         <div class="invalid-feedback">
             La fecha de finalización es obligatoria.
         </div>
@@ -62,16 +62,8 @@
 <script>
     $("#start_date").datepicker({
         dateFormat: "dd/mm/yy",
-        onSelect(date) {
-            dateArr = date.split('/');
-            $('input[name="start_date"').val(dateArr[2] + "-" + dateArr[1] + "-" + dateArr[0]);
-        }
     });
     $("#end_date").datepicker({
         dateFormat: "dd/mm/yy",
-        onSelect(date) {
-            dateArr = date.split('/');
-            $('input[name="end_date"').val(dateArr[2] + "-" + dateArr[1] + "-" + dateArr[0]);
-        }
     });
 </script>
