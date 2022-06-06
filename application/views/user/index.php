@@ -31,12 +31,13 @@
             <?php if (count($users) > 0) : ?>
                 <?php foreach ($users as $user) : ?>
                     <tr>
-                        <td><a href="<?= site_url(['user', 'view', $user['id']]); ?> "><?= $user['last_name'] . ", " . $user['first_name'] . $user['middle_name']  ?></a>                        
-                    </td>
+                        <td><?= $user['last_name'] . ", " . $user['first_name'] . $user['middle_name'] ?></a>
+                        </td>
                         <td><?= $user['email']; ?></td>
                         <td><?= $user['username'] ?></td>
                         <td>
-                            <a href="<?= site_url(['user', 'edit', $user['id']]); ?> ">Editar</a>
+                            <a data-bs-toggle="tooltip" title="Editar" href="<?= site_url(['user', 'edit', $user['id']]); ?> "><i class="fa-regular fa-pen-to-square"></i></a>
+                            <a data-bs-toggle="tooltip" title="Asignar curso" href="<?= site_url(['user', 'assign', $user['id']]); ?> "><i class="fa-regular fa-rectangle-list"></i></a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

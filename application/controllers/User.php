@@ -8,6 +8,11 @@ class User extends MY_Controller
     {
         parent::__construct();
         $this->load->model('User_model');
+        $this->load->model('Grade_level_model');
+        $this->load->model('User_grade_level_model');
+        $this->load->model('Term_model');
+        $this->load->model('Rubric_model');
+        $this->load->model('User_grade_level_detail_model');
     }
 
     public function index($start = 0, $reset = NULL)
@@ -15,7 +20,7 @@ class User extends MY_Controller
         if ($reset) {
             $this->session->unset_userdata('search_user');
         }
-        
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $search_user = $this->input->post('search_user');
             $this->session->set_userdata('search_user', $search_user);
@@ -63,12 +68,12 @@ class User extends MY_Controller
             $this->load->view('user/create');
             $this->load->view('templates/footer');
         } else {
-            $insert_id = $this->User_model->insert_one_from_form();
+            $insert_id = $this->User_model->insert_one_using_form();
             if ($insert_id) {
-                $this->session->set_flashdata('success', 'The registro fue creado exitosamente.');
+                $this->session->set_flashdata('success', 'El registro fue creado exitosamente.');
                 redirect('user');
             } else {
-                $this->session->set_flashdata('error', 'The registro no pudo ser creado. Por favor comuníquese con el administrador.');
+                $this->session->set_flashdata('error', 'El registro no pudo ser creado. Por favor comuníquese con el administrador.');
                 redirect('user');
             }
         }
@@ -87,8 +92,13 @@ class User extends MY_Controller
         $this->form_validation->set_rules('username', 'Nombre de usuario', 'required');
 
         if ($this->form_validation->run() === FALSE) {
-            $data['user'] = $this->User_model->select_one_by_primary_key($id);
+            if (!$data['user'] = $this->User_model->select_one_by_primary_key($id)) {
+                show_404();
+            }
 
+            $data['terms'] = $this->Term_model->select_field_for_dropdown('title', 'Seleccione periodo de evaluación');
+            $data['grade_levels'] = $this->Grade_level_model->select_field_for_dropdown('title', 'Seleccione curso');
+            $data['user_grade_levels'] = $this->User_grade_level_model->select_user_grade_levels_extended($id);
             $this->load->view('templates/header');
             $this->load->view('templates/navbar');
             $this->load->view('user/edit', $data);
@@ -104,5 +114,58 @@ class User extends MY_Controller
                 redirect('user');
             }
         }
+    }
+
+    public function assign($id)
+    {
+
+        $this->form_validation->set_rules('grade_level_id', 'Curso', 'required');
+        $this->form_validation->set_rules('term_id', 'Periodo de evaluación', 'required');
+        $this->form_validation->set_rules('rubrics[]', 'Correo electrónico del estudiante', 'required');
+
+        if ($this->form_validation->run() === FALSE) {
+            if (!$data['user'] = $this->User_model->select_one_by_primary_key($id)) {
+                show_404();
+            }
+
+            $data['terms'] = $this->Term_model->select_field_for_dropdown('title', '', ['start_date', 'DESC']);
+            $data['grade_levels'] = $this->Grade_level_model->select_field_for_dropdown('title');
+            $data['rubrics'] = $this->Rubric_model->select_all(34);
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/navbar');
+            $this->load->view('user/assign', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $insert_id = $this->User_grade_level_model->insert_one_using_form();
+
+            if ($insert_id) {
+                $rubrics = $this->input->post('rubrics');
+            
+                $data = array();
+                foreach($rubrics as $rubric) {
+                    $row = array('user_grade_level_id' => $insert_id, 'rubric_id' => $rubric);
+                    array_push($data, $row);
+                }  
+                $this->User_grade_level_detail_model->insert_many($data);
+
+                $this->session->set_flashdata('success', 'El registro fue creado exitosamente.');
+                redirect('user');
+            } else {
+                $this->session->set_flashdata('error', 'El registro no pudo ser creado. Por favor comuníquese con el administrador.');
+                redirect('user');
+            }
+        }
+    }
+
+    public function unassign($id) {
+        if ($this->input->is_ajax_request()) {
+            echo $id;
+        } else {
+            echo "NOT AJAX";
+            $ajax = $this->input->is_ajax_request();
+            var_dump($ajax);
+        }
+
     }
 }

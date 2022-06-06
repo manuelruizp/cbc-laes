@@ -62,12 +62,12 @@ class Term extends MY_Controller
             $this->load->view('term/create');
             $this->load->view('templates/footer');
         } else {
-            $insert_id = $this->Term_model->insert_one_from_form();
+            $insert_id = $this->Term_model->insert_one_using_form();
             if ($insert_id) {
-                $this->session->set_flashdata('success', 'The registro fue creado exitosamente.');
+                $this->session->set_flashdata('success', 'El registro fue creado exitosamente.');
                 redirect('term');
             } else {
-                $this->session->set_flashdata('error', 'The registro no pudo ser creado. Por favor comuníquese con el administrador.');
+                $this->session->set_flashdata('error', 'El registro no pudo ser creado. Por favor comuníquese con el administrador.');
                 redirect('term');
             }
         }

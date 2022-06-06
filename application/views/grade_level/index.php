@@ -30,11 +30,7 @@
             <?php if (count($grade_levels) > 0) : ?>
                 <?php foreach ($grade_levels as $grade_level) : ?>
                     <tr>
-                        <td>
-                            <a href="<?= site_url(['grade_levels', 'view', $grade_level['title']]); ?> ">
-                                <?= $grade_level['title'] ?>
-                            </a>
-                        </td>
+                        <td> <?= $grade_level['title'] ?> </td>
                         <td><?= $grade_level['title_abbr']; ?></td>
                         <td>
                             <a href="<?= site_url(['grade_level', 'edit', $grade_level['id']]); ?> ">Editar</a>

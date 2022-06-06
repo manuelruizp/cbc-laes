@@ -12,14 +12,11 @@ class Auth extends MY_Controller
 
 	public function login()
 	{
-		$this->load->helper('form');
-		$this->load->library('form_validation');
-
 		$this->form_validation->set_rules('username', 'Nombre de usuario', 'required');
 		$this->form_validation->set_rules('password', 'Contraseña', 'required');
 		$this->form_validation->set_rules('term_id', 'Término', 'required');
 
-		$data['terms'] = $this->Term_model->select_terms_for_dropdown();
+		$data['terms'] = $this->Term_model->select_field_for_dropdown('title', '', ['start_date', 'DESC']);
 
 		if ($this->form_validation->run() === FALSE) {
 			$this->load->view('auth/login', $data);
@@ -28,28 +25,32 @@ class Auth extends MY_Controller
 			$password = $this->input->post('password');
 			$term_id = $this->input->post('term_id');
 
-			$user = $this->User_model->get_user_by_username($username);
+			$user = $this->User_model->select_one_by_field('username', $username);
 
 			if ($user === NULL) {
 				$this->session->set_flashdata('errors', 'Este nombre de usuario no existe.');
 				redirect('/auth/login');
-			} else if (password_verify($password, $user['password_hash']) === FALSE) {
+			} else if (password_verify($password, $user['password']) === FALSE) {
 				$this->session->set_flashdata('errors', 'El nombre de usuario y la contraseña no concuerdan.');
 				redirect('/auth/login');
-			} else if (password_verify($password, $user['password_hash']) === TRUE) {
+			} else if (password_verify($password, $user['password']) === TRUE) {
 				$userdata = array(
 					'user_id'  => $user['id'],
-					'user_full_name'  => $user['full_name'],
+					'user_full_name'  => $user['first_name'] . " " . $user['last_name'],
 					'user_email'     => $user['email'],
-					'term_id' => $term_id,
+					'user_role' => $user['role'],
+					'user_term_id' => $term_id,
 					'logged_in' => TRUE
 				);
 
-				var_dump($userdata);
-
-				// $this->session->set_userdata($userdata);
-				// redirect('/dashboard');
+				$this->session->set_userdata($userdata);
+				redirect('/home');
 			}
 		}
+	}
+
+	public function logout() {
+		session_destroy();
+		redirect('auth/login');
 	}
 }

@@ -11,7 +11,8 @@
     <link href="/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/jquery-ui/jquery-ui.css">
     <link rel="stylesheet" href="/css/style.css">
-    <script src="/assets/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/assets/fontawesome/css/all.css">
+    <script src="/assets/bootstrap/js/bootstrap.bundle.js"></script>
     <script src="/assets/jquery/jquery-3.6.0.min.js"></script>
     <script src="/assets/jquery-ui/jquery-ui.js"></script>
 

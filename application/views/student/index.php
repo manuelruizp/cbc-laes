@@ -22,6 +22,7 @@
         <thead>
             <tr>
                 <th scope="col">Nombre</th>
+                <th scope="col">Sexo</th>
                 <th scope="col">Fecha de nacimiento</th>
                 <th scope="col">Acciones</th>
             </tr>
@@ -30,7 +31,10 @@
             <?php if (count($students) > 0) : ?>
                 <?php foreach ($students as $student) : ?>
                     <tr>
-                        <td><a href="<?= site_url(['student', 'view', $student['id']]); ?> "><?= $student['paternal_last_name'] . " " . $student['maternal_last_name'] . ", " . $student['first_name'] . " " . $student['middle_name']  ?></a>
+                        <td><?= $student['paternal_last_name'] . " " . $student['maternal_last_name'] . ", " . $student['first_name'] . " " . $student['middle_name']  ?></a>
+                        </td>
+                        <td>
+                            <?= $student['sex'] == 'M' ? 'Masculino' : 'Femenino'; ?>
                         </td>
                         <td>
                             <?= date("d/m/Y", strtotime($student['birthdate'])); ?>

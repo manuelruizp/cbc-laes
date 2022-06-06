@@ -39,7 +39,7 @@
                         <td><?= $term['start_date']; ?></td>
                         <td><?= $term['end_date'] ?></td>
                         <td>
-                            <a href="<?= site_url(['term', 'edit', $term['id']]); ?> ">Editar</a>
+                            <a href="<?= site_url(['term', 'edit', $term['id']]); ?>">Editar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

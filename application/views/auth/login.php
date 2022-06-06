@@ -19,6 +19,13 @@
 
         <img class="mb-4" src="/assets/images/logo.png" alt="" width="100%" height="100%">
         <h1 class="h3 mb-3 fw-normal">Por favor ingresar</h1>
+        
+        <?php if ($this->session->flashdata('errors')) : ?>
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong>¡Error!</strong> <?= $this->session->flashdata('errors'); ?>
+            </div>
+        <?php endif; ?>
 
         <div class="input-group">
             <?= form_input(

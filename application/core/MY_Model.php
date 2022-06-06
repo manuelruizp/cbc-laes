@@ -70,7 +70,17 @@ class MY_Model extends CI_Model
      */
     public function select_one_by_primary_key($id)
     {
-        return  $this->db->get_where($this->table, ['id' => $id])->row_array();
+        return $this->db->get_where($this->table, ['id' => $id])->row_array();
+    }
+
+     /**
+     * Método general para seleccionar una fila por un campo diferente del primary key de la tabla seleccionada
+     * @param array $data
+     * @return array
+     */
+    public function select_one_by_field($field, $value)
+    {
+        return $this->db->get_where($this->table, [$field => $value])->row_array();
     }
 
     /**
@@ -90,7 +100,7 @@ class MY_Model extends CI_Model
         return $this->db->insert_id();
     }
 
-    public function insert_one_from_form()
+    public function insert_one_using_form()
     {
         if ($this->fillables == NULL && $this->fillable_dates == NULL) {
             die('Debes configurar uno de estos tipos de campos: fillables y fillable_dates (fechas dominicanas).');
@@ -107,7 +117,7 @@ class MY_Model extends CI_Model
                 $data[$fillable_date] = $dateArr[2] . "-" . $dateArr[1] . "-" . $dateArr[0];
             }
         }
-        
+
         if ($this->hashable_passwords) {
             foreach ($this->hashable_passwords as $hashable_password) {
                 if (!empty($this->input->post($hashable_password))) {
@@ -241,11 +251,18 @@ class MY_Model extends CI_Model
     }
 
 
-    public function select_field_for_dropdown($field)
+    public function select_field_for_dropdown($field, $label = NULL, $order_by = NULL)
     {
+        if($order_by) {
+            $this->db->order_by($order_by[0], $order_by[1]);
+        }
+        
         $query = $this->db->get($this->table)->result_array();
 
-        $field_options = array('' => 'Elija una opción...');
+        if ($label) {
+            $field_options = array('' => $label);
+        }
+
         foreach ($query as $row) {
             $field_options[$row[$this->primary_key]] = $row[$field];
         }
