@@ -11,6 +11,7 @@ class Evaluation extends MY_Controller
         parent::__construct();
         $this->load->model('User_grade_level_model');
         $this->load->model('Student_grade_level_model');
+        $this->load->model('Student_model');
 
         $this->user_id = $this->session->userdata('user_id');
         $this->user_term_id = $this->session->userdata('user_term_id');
@@ -30,8 +31,16 @@ class Evaluation extends MY_Controller
         $this->load->view('templates/footer');
     }
 
-    public function student($student_id)
+    public function form($grade_level_id, $student_id)
     {
+        $data['rubrics'] = $this->User_grade_level_model->select_user_rubrics_by_grade_level($this->user_term_id, $this->user_id, $grade_level_id);
+        $data['student'] = $this->Student_model->select_one_by_primary_key($student_id);
+
+        $this->load->view('templates/header');
+        $this->load->view('templates/navbar');
+        $this->load->view('templates/flash_messages');
+        $this->load->view('evaluation/form', $data);
+        $this->load->view('templates/footer');
         
     }
 }

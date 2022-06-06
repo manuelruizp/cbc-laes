@@ -6,7 +6,7 @@
     <table class="table table-sm">
         <thead>
             <tr>
-                <th>Curso</th>
+                <th>Estudiante</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -14,7 +14,7 @@
             <?php foreach ($students as $student) : ?>
                 <tr>
                     <td><?= $student['paternal_last_name'] . " " . $student['maternal_last_name'] . ", " . $student['first_name'] . " " . $student['middle_name'] ?></td>
-                    <td><a href="<?= site_url(['evaluation', 'student', $student['student_id']]); ?>">Evaluar</a></td>
+                    <td><a href="<?= site_url(['evaluation', 'form', $student['grade_level_id'], $student['student_id']]); ?>">Evaluar</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

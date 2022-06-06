@@ -12,8 +12,4 @@ class Rubric_model extends MY_Model
     {
         parent::__construct();
     }
-
-    public function get_rubrics_by_grade_level($term_id, $user_id, $grade_level_id) {
-
-    }
 }

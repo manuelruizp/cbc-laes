@@ -51,4 +51,31 @@ class User_grade_level_model extends MY_Model
 
         return $this->db->get()->result_array();
     }
+
+    public function select_user_rubrics_by_grade_level($term_id, $user_id, $grade_level_id)
+    {
+        $this->db->select('user_grade_levels.id,
+        user_grade_levels.term_id, 
+        user_grade_levels.grade_level_id,
+        user_grade_levels.user_id,
+        user_grade_level_details.user_grade_level_id,
+        user_grade_level_details.rubric_id,
+        rubrics.id,
+        rubrics.title AS rubric_title,
+        rubrics.non_compliance,
+        rubrics.partial_compliance,
+        rubrics.compliance,
+        rubrics.exceeds_compliance,
+        rubrics.type');
+
+        $this->db->from('user_grade_level_details');
+
+        $this->db->where('user_grade_levels.term_id', $term_id);
+        $this->db->where('user_grade_levels.user_id', $user_id);
+        $this->db->where('user_grade_levels.grade_level_id', $grade_level_id);
+        $this->db->join('user_grade_levels', 'user_grade_levels.id = user_grade_level_details.user_grade_level_id');
+        $this->db->join('rubrics', 'rubrics.id = user_grade_level_details.rubric_id');
+
+        return $this->db->get()->result_array();
+    }
 }
