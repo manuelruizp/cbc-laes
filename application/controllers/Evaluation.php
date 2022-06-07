@@ -33,14 +33,25 @@ class Evaluation extends MY_Controller
 
     public function form($grade_level_id, $student_id)
     {
-        $data['rubrics'] = $this->User_grade_level_model->select_user_rubrics_by_grade_level($this->user_term_id, $this->user_id, $grade_level_id);
-        $data['student'] = $this->Student_model->select_one_by_primary_key($student_id);
 
-        $this->load->view('templates/header');
-        $this->load->view('templates/navbar');
-        $this->load->view('templates/flash_messages');
-        $this->load->view('evaluation/form', $data);
-        $this->load->view('templates/footer');
-        
+        $this->form_validation->set_rules('term_id', 'ID del periodo', 'required');
+        $this->form_validation->set_rules('user_id', 'ID del usuario', 'required');
+        $this->form_validation->set_rules('student_id', 'ID del estudiate', 'required');
+
+        if ($this->form_validation->run() === FALSE) {
+
+            $data['rubrics'] = $this->User_grade_level_model->select_user_rubrics_by_grade_level($this->user_term_id, $this->user_id, $grade_level_id);
+            $data['student'] = $this->Student_model->get_student_term_information($student_id);
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/flash_messages');
+            $this->load->view('evaluation/form', $data);
+            $this->load->view('templates/footer');
+        } else {
+
+            $rubrics = $this->input->post('rubric_1');
+            var_dump($rubrics);
+        }
     }
 }

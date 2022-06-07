@@ -12,5 +12,23 @@ class Student_model extends MY_Model
     {
         parent::__construct();
     }
-}
 
+    public function get_student_term_information($student_id)
+    {
+        $this->db->select('students.id, 
+        students.first_name,
+          students.middle_name, 
+          students.paternal_last_name, 
+          students.maternal_last_name,
+          student_grade_levels.grade_level_id,
+          grade_levels.title AS grade_level_title');
+
+        $this->db->from($this->table);
+        $this->db->where('students.id', $student_id);
+
+        $this->db->join('student_grade_levels', 'student_grade_levels.student_id = students.id');
+        $this->db->join('grade_levels', 'grade_levels.id = student_grade_levels.grade_level_id');
+
+        return $this->db->get()->row_array();
+    }
+}
